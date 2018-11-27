@@ -1,0 +1,43 @@
+
+#!/bin/bash
+
+# login to Azure Poratl
+#az login
+# Create the Resource Group
+az group create -n democliresource -l eastus
+# Create the Storage Account 
+# SKU : The access tier used for billing StandardBlob accounts.
+az storage account create -n democlistorageaccount -g democliresource -l eastus --sku Standard_GRS
+
+export AZURE_STORAGE_ACCOUNT='democlistorageaccount'
+export AZURE_STORAGE_ACCESS_KEY='2a3cauUIKGAhRS0dCTz5VoEju0TWtjdOajO19JvYYs6ae2y9LPnL0LIRT663s2Z0E/WLrL2GuoxipdNMZJwiFA=='
+# Create thw Container 
+
+# Upload the Folder into the blob
+#export container_name='democlicontainer'
+#export blob_name='web'
+
+#export file_to_upload='~/Users/nikhilsp/Downloads/Archive/asset-manifest.json'
+#export destination_file='~/service-worker.js'
+az storage container create -c democlicontainer 
+az static_website crate -n demoxclicontainer --index-document index.html --error-document error.html
+#az storage blob upload -c democlicontainer -f Archive -n web
+#azure storage blob upload \Downloads\Archive\ -c democlicontainer  web
+
+
+
+
+
+#export source_folder='/Users/nikhilsp/Downloads/Archive/*'
+#export destination_folder='Archive/'
+
+#for f in $source_folder
+#do
+  #echo "Uploading $f file..."
+  #azure storage blob upload $f $democlicontainer $destination_folder$(basename $f)
+#done
+
+#azure storage blob list $democlicontainer
+
+echo "Completed"
+

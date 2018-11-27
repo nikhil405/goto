@@ -1,0 +1,8 @@
+#!/bin/bash
+#az login
+az group create --tags democli1 -g cliresource1 -l eastus
+#az extension add --name storage
+az account set --subscription 40478ac8-e8b9-4d73-bf17-415e86372279
+#az storage account show-connection-string -g cliresource1 -n clistaccount1
+az storage account create -n clistaccount1 -g cliresource1 -l eastus --sku Standard_LRS --kind StorageV2 --access-tier Hot 
+az storage blob service-properties update -n clistaccount1  --static-website --404-document error.html --index-document index.html 

@@ -1,0 +1,18 @@
+# #!/bin/bash
+# #az login
+# az group create -g demoresource -l eastus
+# az storage account create -n demostaccount -g demoresource -l eastus --sku Standard_RAGRS --kind StorageV2 --access-tier Hot --https-only true 
+# az extension add --name storage-preview
+# az account set --subscription 40478ac8-e8b9-4d73-bf17-415e86372279
+# az storage blob service-properties update --account-name demostaccount --static-website --404-document error.html --index-document index.html 
+#az login
+az account list --all
+az account set --subscription 40478ac8-e8b9-4d73-bf17-415e86372279
+az group create --name testscli2 --location westus2
+az storage account create --name testoirre --location westus2 --resource-group testscli2 --sku Standard_RAGRS --https-only true --kind StorageV2 --access-tier Hot
+az storage blob service-properties update --account-name testoirre --static-website --404-document index.html --index-document index.html 
+#az storage account show -n testoirre -g testscli2 --query "primaryEndpoints.web" --output tsv
+# az storage blob upload-batch -s /Users/harsha/Desktop/Archive --destination $web --account-name testoir
+#az storage container create -n 'test22' --account-name testoirre --public-access container
+#az storage account keys list --account-name testoirre --resource-group testscli2 --output tableexport AZURE_STORAGE_ACCESS_KEY="key2"
+#az storage blob upload-batch -d 'test22' --account-name testoirre -s /Users/harsha/Desktop/Archive
